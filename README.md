@@ -1,5 +1,7 @@
 # Alura_Trainning
 
+[![CI](https://github.com/bruno1186/Alura_Trainning/actions/workflows/ci.yml/badge.svg)](https://github.com/bruno1186/Alura_Trainning/actions/workflows/ci.yml)
+
 Repositório de estudos e material de referência cobrindo temas fundamentais para engenharia de software e dados, organizado por trilha. Cada pasta contém um README com conceitos, boas práticas e, quando aplicável, exemplos de código.
 
 ## Trilhas
