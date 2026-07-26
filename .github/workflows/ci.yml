@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r engenharia-de-dados/requirements.txt
+          pip install -r ciencia-de-dados/requirements.txt
+          pip install -r qualidade-bdd-tdd/requirements.txt
+
+      - name: Run data engineering pipeline example
+        run: python engenharia-de-dados/pipeline_exemplo.py
+
+      - name: Run data science EDA example
+        run: python ciencia-de-dados/analise_exemplo.py
+
+      - name: Run TDD unit tests (pytest)
+        run: pytest qualidade-bdd-tdd/tdd_exemplo/ -v
+
+      - name: Run BDD scenarios (behave)
+        run: behave qualidade-bdd-tdd/bdd_exemplo/features/
